@@ -4,6 +4,9 @@
       "intent": "PlayAudio"
     },
     {
+      "intent": "SongInfo"
+    },
+    {
       "intent": "AMAZON.PauseIntent"
     },
     {

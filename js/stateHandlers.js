@@ -60,7 +60,7 @@ var stateHandlers = {
             // No session ended logic
         },
         'Unhandled' : function () {
-            var message = 'Sorry, I could not understand. Please say, play the audio, to begin the audio.';
+            var message = 'Oops, I could not understand. Please say, play the audio, to begin the audio.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
         }
@@ -96,6 +96,11 @@ var stateHandlers = {
             this.response.speak(message).listen(reprompt);
             this.emit(':responseReady');
         },
+        'SongInfo' : function() {
+            var message = "This is a song by an artist."
+            this.response.speak(message);
+            this.emit(':responseReady');
+        },
         'PlayAudio' : function () { controller.play.call(this) },
         'AMAZON.NextIntent' : function () { controller.playNext.call(this) },
         'AMAZON.PreviousIntent' : function () { controller.playPrevious.call(this) },
@@ -119,7 +124,7 @@ var stateHandlers = {
             // No session ended logic
         },
         'Unhandled' : function () {
-            var message = 'Sorry, I could not understand. You can say, Next or Previous to navigate through the playlist.';
+            var message = 'Oh no, I could not understand. You can say, Next or Previous to navigate through the playlist.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
         }
@@ -210,6 +215,7 @@ var controller = function () {
 
             var self=this
             reverbApi.getSong(podcast.songid, function(song) {
+                self.response.speak("This is "+song.name+" by "+song.artist.name)
                 self.response.audioPlayerPlay(playBehavior, song.url, token, null, offsetInMilliseconds);
                 self.emit(':responseReady')
             })
