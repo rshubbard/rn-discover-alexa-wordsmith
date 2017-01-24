@@ -3,7 +3,7 @@
 var Alexa = require('alexa-sdk');
 var audioData = require('./audioAssets');
 var constants = require('./constants');
-var reverbApi = require('./reverbApi')
+var reverbApi = require('./reverbApi');
 
 var stateHandlers = {
     startModeIntentHandlers : Alexa.CreateStateHandler(constants.states.START_MODE, {
@@ -91,7 +91,8 @@ var stateHandlers = {
                     ' Would you like to resume?';
                 reprompt = 'You can say yes to resume or no to play from the top.';
             }
-
+            
+            reverbApi.getSong(19303278, function(song) {});
             this.response.speak(message).listen(reprompt);
             this.emit(':responseReady');
         },
@@ -207,11 +208,11 @@ var controller = function () {
                 this.response.cardRenderer(cardTitle, cardContent, null);
             }
 
-            reverbApi.getSong(12396112, function(song) {
-                this.response.audioPlayerPlay(playBehavior, song.url, token, null, offsetInMilliseconds);
-                this.emit(':responseReady');
+            var self=this
+            reverbApi.getSong(podcast.songid, function(song) {
+                self.response.audioPlayerPlay(playBehavior, song.url, token, null, offsetInMilliseconds);
+                self.emit(':responseReady')
             })
-
 
         },
         stop: function () {
