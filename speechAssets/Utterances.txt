@@ -1,3 +1,6 @@
+PlayGenre play some {Genre}
+PlayGenre give me some {Genre}
+
 PlayAudio begin podcast
 PlayAudio begin the podcast
 PlayAudio begin playing the podcast

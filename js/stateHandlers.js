@@ -27,6 +27,9 @@ var stateHandlers = {
             this.response.speak(message).listen(reprompt);
             this.emit(':responseReady');
         },
+        'PlayGenre': function () {
+            controller.playCollection.call(this);
+        },
         'PlayAudio' : function () {
             if (!this.attributes['playOrder']) {
                 // Initialize Attributes if undefined.
@@ -92,9 +95,11 @@ var stateHandlers = {
                 reprompt = 'You can say yes to resume or no to play from the top.';
             }
             
-            reverbApi.getSong(19303278, function(song) {});
             this.response.speak(message).listen(reprompt);
             this.emit(':responseReady');
+        },
+        'PlayGenre': function () {
+            controller.playCollection.call(this);
         },
         'SongInfo' : function() {
             var message = "This is a song by an artist."
@@ -183,6 +188,15 @@ module.exports = stateHandlers;
 
 var controller = function () {
     return {
+        playCollection: function() {
+            var genre = this.event.request.intent.slots.Genre.value
+            var self=this
+            reverbApi.getCollection(genre, function(collection) {
+                var message = "Playing collection "+collection.name+" for genre "+genre
+                self.response.speak(message)
+                self.emit(':responseReady')
+            });
+        },
         play: function () {
             /*
              *  Using the function to begin playing audio when:
@@ -215,7 +229,7 @@ var controller = function () {
 
             var self=this
             reverbApi.getSong(podcast.songid, function(song) {
-                self.response.speak("This is "+song.name+" by "+song.artist.name)
+                self.response.speak("This is "+song.name+" by "+song.artist_name)
                 self.response.audioPlayerPlay(playBehavior, song.url, token, null, offsetInMilliseconds);
                 self.emit(':responseReady')
             })

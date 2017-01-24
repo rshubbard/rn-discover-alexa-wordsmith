@@ -1,6 +1,13 @@
 {
   "intents": [
     {
+      "intent": "PlayGenre",
+      "slots": [{
+        "name": "Genre",
+        "type": "AMAZON.Genre"
+      }]
+    },
+    {
       "intent": "PlayAudio"
     },
     {
