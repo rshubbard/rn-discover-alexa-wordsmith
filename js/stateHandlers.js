@@ -25,7 +25,7 @@ var stateHandlers = {
             //  Change state to START_MODE
             this.handler.state = constants.states.START_MODE;
 
-            var message = 'Welcome to the ReverbNation Discover. You can say, play the audio to begin discovering music.';
+            var message = 'Welcome to the ReverbNation Discover. You can say play me some music or play me some Rock music.  I know about several different genres.';
             var reprompt = 'You can say, play the audio, to begin.';
 
             this.response.speak(message).listen(reprompt);
