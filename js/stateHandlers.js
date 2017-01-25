@@ -192,11 +192,17 @@ var controller = function () {
             var genre = this.event.request.intent.slots.Genre.value
             var self=this
             reverbApi.getCollection(genre, function(collection) {
-                var message = "Playing collection "+collection.name+" for genre "+genre
-                self.response.speak(message)
-                self.emit(':responseReady')
+                audioData=[]
+                console.log("playCollection id="+collection.id)
+                console.log("playCollection id="+collection.song_ids)
+                collection.song_ids.forEach(function(song_id) {
+                    console.log("playCollection adding song id="+song_id)
+                    audioData.push({songid: song_id, name: 'Bogus'})
+                })
+                controller.play.call(self)
             });
         },
+
         play: function () {
             /*
              *  Using the function to begin playing audio when:
@@ -216,7 +222,8 @@ var controller = function () {
 
             var token = String(this.attributes['playOrder'][this.attributes['index']]);
             var playBehavior = 'REPLACE_ALL';
-            var podcast = audioData[this.attributes['playOrder'][this.attributes['index']]];
+            var podcastIndex = this.attributes['playOrder'][this.attributes['index']]
+            var podcast = audioData[podcastIndex];
             var offsetInMilliseconds = this.attributes['offsetInMilliseconds'];
             // Since play behavior is REPLACE_ALL, enqueuedToken attribute need to be set to null.
             this.attributes['enqueuedToken'] = null;
