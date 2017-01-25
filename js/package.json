@@ -16,7 +16,8 @@
   "license": "See license in ../LICENSE.txt",
   "dependencies": {
     "alexa-sdk": "^1.0.4",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "wordsmith-node-sdk": "^1.0.0"
   },
   "repository": {
     "type": "git",

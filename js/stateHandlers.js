@@ -5,6 +5,9 @@ var audioData = require('./audioAssets');
 var constants = require('./constants');
 var reverbApi = require('./reverbApi');
 
+var dataForWordsmith = require('./dataForWordsmith');
+var Wordsmith = require('wordsmith-node-sdk')(API_KEY_HERE, 'https://api.automatedinsights.com/v1');
+
 var stateHandlers = {
     startModeIntentHandlers : Alexa.CreateStateHandler(constants.states.START_MODE, {
         /*
@@ -236,9 +239,23 @@ var controller = function () {
 
             var self=this
             reverbApi.getSong(podcast.songid, function(song) {
-                self.response.speak("This is "+song.name+" by "+song.artist_name)
+            var data = dataForWordsmith(song);
+            Wordsmith.projects.find('test-test')
+              .then(function(project) {
+                return project.templates.find('test-test-test');
+              })
+              .then(function(template) {
+                return template.generate(data);
+              })
+              .then(function(content) {
+                self.response.speak(content)
                 self.response.audioPlayerPlay(playBehavior, song.url, token, null, offsetInMilliseconds);
                 self.emit(':responseReady')
+              })
+              .catch(function(error) {
+                console.log("BAD THINGS!" + error)
+              });
+                
             })
 
         },
