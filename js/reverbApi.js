@@ -15,7 +15,8 @@ var reverbApi = {
         var url = baseUrl+"/discovery/feed?genre="+genre
         console.log("getCollection calling "+url)
         req = request.get({url:url, json:true}, function(e,r,data) {
-            callback(data.collections[0])
+            var collection = data.collections[1] || data.collections[0]
+            callback(collection)
         });
     },
 
