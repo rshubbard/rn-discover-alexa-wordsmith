@@ -1,20 +1,19 @@
 PlayGenre play some {Genre}
+PlayGenre to play some {Genre}
 PlayGenre give me some {Genre}
+PlayGenre to give me some {Genre}
+PlayGenre play {Genre}
+PlayGenre give me {Genre}
+PlayGenre play {Genre}
+PlayGenre give me {Genre}
+PlayGenre to hear {Genre}
+PlayGenre to hear some {Genre}
+PlayGenre let me hear {Genre}
+PlayGenre we want {Genre}
+PlayGenre bring out the {Genre}
+PlayGenre I want to {Genre}
 
-PlayAudio begin podcast
-PlayAudio begin the podcast
-PlayAudio begin playing the podcast
-PlayAudio start podcast
-PlayAudio start the podcast
-PlayAudio start playing the podcast
-PlayAudio play the podcast
-PlayAudio to play
-PlayAudio to begin podcast
-PlayAudio to begin the podcast
-PlayAudio to begin playing the podcast
-PlayAudio to start podcast
-PlayAudio to start the podcast
-PlayAudio to start playing the podcast
-PlayAudio to play the podcast
 
 SongInfo tell me more
+SongInfo what do you know about this artist
+SongInfo what do you know about this band
