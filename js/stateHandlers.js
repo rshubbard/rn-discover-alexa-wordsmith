@@ -198,11 +198,11 @@ var controller = function () {
             reverbApi.getCollection(genre, function(collection) {
                 audioData=[]
                 console.log("playCollection id="+collection.id)
-                console.log("playCollection id="+collection.song_ids)
                 collection.song_ids.forEach(function(song_id) {
                     console.log("playCollection adding song id="+song_id)
                     audioData.push({songid: song_id, name: 'Bogus'})
                 })
+                self.attributes['playbackFinished'] = true;
                 controller.play.call(self)
             });
         },
@@ -231,13 +231,7 @@ var controller = function () {
             var offsetInMilliseconds = this.attributes['offsetInMilliseconds'];
             // Since play behavior is REPLACE_ALL, enqueuedToken attribute need to be set to null.
             this.attributes['enqueuedToken'] = null;
-
-            if (canThrowCard.call(this)) {
-                var cardTitle = 'Playing ' + podcast.title;
-                var cardContent = 'Playing ' + podcast.title;
-                this.response.cardRenderer(cardTitle, cardContent, null);
-            }
-
+            
             var self=this
             reverbApi.getSong(podcast.songid, function(song) {
             var data = dataForWordsmith(song);
