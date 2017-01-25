@@ -1,3 +1,21 @@
+PlayGenre play some music
+PlayGenre to play some music
+PlayGenre give me some music
+PlayGenre to give me some music
+PlayGenre play music
+PlayGenre to hear some music
+PlayGenre to let me hear music
+PlayGenre we want music
+
+PlayGenre play some songs
+PlayGenre to play some songs
+PlayGenre give me some songs
+PlayGenre to give me some songs
+PlayGenre play songs
+PlayGenre to hear some songs
+PlayGenre to let me hear songs
+PlayGenre we want songs
+
 PlayGenre play some {Genre}
 PlayGenre to play some {Genre}
 PlayGenre give me some {Genre}
@@ -12,8 +30,43 @@ PlayGenre let me hear {Genre}
 PlayGenre we want {Genre}
 PlayGenre bring out the {Genre}
 PlayGenre I want to {Genre}
+PlayGenre we want to {Genre}
 
+
+PlayGenre play some {Genre} music
+PlayGenre to play some {Genre} music
+PlayGenre give me some {Genre} music
+PlayGenre to give me some {Genre} music
+PlayGenre play {Genre} music
+PlayGenre give me {Genre} music
+PlayGenre play {Genre} music
+PlayGenre give me {Genre} music
+PlayGenre to hear {Genre} music
+PlayGenre to hear some {Genre} music
+PlayGenre let me hear {Genre} music
+PlayGenre we want {Genre} music
+PlayGenre bring out the {Genre} music
+PlayGenre I want to {Genre} music
+
+PlayGenre play some {Genre} songs
+PlayGenre to play some {Genre} songs
+PlayGenre give me some {Genre} songs
+PlayGenre to give me some {Genre} songs
+PlayGenre play {Genre} songs
+PlayGenre give me {Genre} songs
+PlayGenre play {Genre} songs
+PlayGenre give me {Genre} songs
+PlayGenre to hear {Genre} songs
+PlayGenre to hear some {Genre} songs
+PlayGenre let me hear {Genre} songs
+PlayGenre we want {Genre} songs
+PlayGenre bring out the {Genre} songs
+PlayGenre I want to {Genre} songs
 
 SongInfo tell me more
+SongInfo tell me more about this song
+SongInfo tell me more about this band
+SongInfo tell me more about this artist
+SongInfo what do you know about this song
 SongInfo what do you know about this artist
 SongInfo what do you know about this band
