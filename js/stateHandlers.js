@@ -193,7 +193,7 @@ module.exports = stateHandlers;
 var controller = function () {
     return {
         playCollection: function() {
-            var genre = this.event.request.intent.slots.Genre.value
+            var genre = this.event.request.intent.slots.Genre ? this.event.request.intent.slots.Genre.value : "all"
             var self=this
             reverbApi.getCollection(genre, function(collection) {
                 audioData=[]
