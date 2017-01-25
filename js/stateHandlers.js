@@ -106,23 +106,30 @@ var stateHandlers = {
             controller.playCollection.call(this);
         },
         'SongInfo' : function() {
-            reverbApi.getSong(podcast.songid, function(song) {
+            var songid = audioData[this.attributes['playOrder'][this.attributes['index']]].songid
+            var self=this
+            reverbApi.getSong(songid, function(song) {
             var data = dataForWordsmith(song);
-            Wordsmith.projects.find('test-test')
+              Wordsmith.projects.find('test-test')
               .then(function(project) {
+                console.log('finding moreinfo')  
                 return project.templates.find('moreinfo');
               })
               .then(function(template) {
+                console.log('generating more info')  
                 return template.generate(data);
               })
               .then(function(content) {
-                this.response.speak(content);
-                this.emit(':responseReady');
+                console.log('content='+content)
+                self.response.speak(content);
+                self.emit(':responseReady');
               })
               .catch(function(error) {
                 console.log("BAD THINGS!" + error)
-              });
-                
+                var message = "This is "+song.name+" by "+song.artist_name
+                self.response.speak(message);
+                self.emit(':responseReady');
+              }); 
             }
         )},
         'PlayAudio' : function () { controller.play.call(this) },
