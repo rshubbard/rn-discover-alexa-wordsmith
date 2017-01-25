@@ -158,6 +158,14 @@ var stateHandlers = {
             var message = 'Oh no, I could not understand. You can say, Next or Previous to navigate through the playlist.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
+        },
+        'CowbellEgg' : function() {
+            this.response.speak('Then the only prescription is more <s>cowbell</s>')
+            this.emit(':responseReady')
+        },
+        'ElevenEgg': function() {
+            this.response.speak('ReverbNation and WordSmith can go one <s>higher</s>')
+            this.emit(':responseReady')
         }
     }),
     remoteControllerHandlers : Alexa.CreateStateHandler(constants.states.PLAY_MODE, {

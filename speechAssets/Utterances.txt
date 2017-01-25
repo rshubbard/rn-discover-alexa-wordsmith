@@ -76,3 +76,6 @@ SongInfo who wrote this song
 SongInfo for more info
 SongInfo for more information
 SongInfo if this artist is playing a show soon
+
+CowbellEgg that I have a fever
+ElevenEgg to turn it up to eleven

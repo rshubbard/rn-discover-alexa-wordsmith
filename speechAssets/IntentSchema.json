@@ -42,6 +42,12 @@
     },
     {
       "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "CowbellEgg"
+    },
+    {
+      "intent": "ElevenEgg"
     }
   ]
 }
