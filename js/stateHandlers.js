@@ -106,10 +106,25 @@ var stateHandlers = {
             controller.playCollection.call(this);
         },
         'SongInfo' : function() {
-            var message = "This is a song by an artist."
-            this.response.speak(message);
-            this.emit(':responseReady');
-        },
+            reverbApi.getSong(podcast.songid, function(song) {
+            var data = dataForWordsmith(song);
+            Wordsmith.projects.find('test-test')
+              .then(function(project) {
+                return project.templates.find('moreinfo');
+              })
+              .then(function(template) {
+                return template.generate(data);
+              })
+              .then(function(content) {
+                this.response.speak(content);
+                this.emit(':responseReady');
+              })
+              .catch(function(error) {
+                console.log("BAD THINGS!" + error)
+              });
+                
+            }
+        )},
         'PlayAudio' : function () { controller.play.call(this) },
         'AMAZON.NextIntent' : function () { controller.playNext.call(this) },
         'AMAZON.PreviousIntent' : function () { controller.playPrevious.call(this) },
