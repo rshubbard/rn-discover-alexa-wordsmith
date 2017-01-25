@@ -70,3 +70,9 @@ SongInfo tell me more about this artist
 SongInfo what do you know about this song
 SongInfo what do you know about this artist
 SongInfo what do you know about this band
+SongInfo who is this
+SongInfo who wrote this
+SongInfo who wrote this song
+SongInfo for more info
+SongInfo for more information
+SongInfo if this artist is playing a show soon
